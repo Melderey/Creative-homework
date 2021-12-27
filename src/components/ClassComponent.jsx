@@ -4,7 +4,7 @@ class ClassComponent extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = props;
+    this.state = { ...props };
   }
   handlerClick = () => {
     const { setValue } = this.state;
