@@ -1,23 +1,37 @@
-import { useState } from "react";
-import ClassComponent from "./ClassComponent";
-import FunctionComponent from "./FunctionComponent";
+import React from "react";
 
-const App = () => {
-  const [value, setValue] = useState("Выбери свою кнопку");
-  return (
-    <div>
-      <h1>{value}</h1>
-      <ul>
-        <li>
-          <ClassComponent setValue={setValue} />
-        </li>
-        <li>
-          <FunctionComponent setValue={setValue} />
-        </li>
-      </ul>
-      {/* <h3>{value}</h3> */}
-    </div>
-  );
-};
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { counter: 0 };
+    this.timerID = null;
+  }
+
+  componentDidMount = () => {
+    this.timerID = setInterval(() => {
+      console.log("СomponentDidMount запускается когда компонент монитруется");
+      this.setState((state, props) => ({ counter: state.counter + 1 }));
+      return;
+    }, 3000);
+  };
+
+  componentDidUpdate(prevProps) {
+    console.log("ComponentDidUpdate запускается когда компонент обновляется");
+  }
+
+  componentWillUnmount() {
+    // ComponentWillUnmount запускается когда компонент размонтируется
+    return clearInterval(this.timerID);
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Пример работы методов жизненного цикла</h1>
+        <h2>{this.state.counter}</h2>
+      </div>
+    );
+  }
+}
 
 export default App;
