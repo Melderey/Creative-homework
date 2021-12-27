@@ -3,10 +3,10 @@ import ClassComponent from "./ClassComponent";
 import FunctionComponent from "./FunctionComponent";
 
 const App = () => {
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState("Выбери свою кнопку");
   return (
     <div>
-      <h1>Выбери свою кнопку</h1>
+      <h1>{value}</h1>
       <ul>
         <li>
           <ClassComponent setValue={setValue} />
@@ -15,7 +15,7 @@ const App = () => {
           <FunctionComponent setValue={setValue} />
         </li>
       </ul>
-      <h3>{value}</h3>
+      {/* <h3>{value}</h3> */}
     </div>
   );
 };
