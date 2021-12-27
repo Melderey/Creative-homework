@@ -8,7 +8,7 @@ class ClassComponent extends React.Component {
   }
   handlerClick = () => {
     const { setValue } = this.state;
-    this.setState(() => setValue("Классовый стиль"));
+    this.setState(() => setValue("Классы наше всё!"));
   };
 
   render() {

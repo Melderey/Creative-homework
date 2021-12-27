@@ -2,7 +2,7 @@ const FunctionComponent = (props) => {
   const { setValue } = props;
   const handlerClick = (e) => {
     e.preventDefault();
-    setValue("Функциональный стиль");
+    setValue("Функции наше всё!");
   };
   return (
     <button onClick={handlerClick}>
