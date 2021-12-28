@@ -47,6 +47,7 @@ class App extends React.Component {
 
         <form>
           <textarea
+            id="textAreaTarget"
             placeholder="Введите свой текст"
             onChange={this.handlerChange}
           ></textarea>
