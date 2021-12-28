@@ -1,27 +1,47 @@
 import React from "react";
+import "./App.css";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { counter: 0, text: "" };
+    this.state = {
+      counter: 0,
+      textArea: "",
+      textMouse: "Наведи на меня мышкой",
+    };
     this.handlerChange = this.handlerChange.bind(this);
+    this.handlerMouseEnter = this.handlerMouseEnter.bind(this);
+    this.handlerMouseLeave = this.handlerMouseLeave.bind(this);
   }
 
   handlerChange(e) {
-    // console.log("handlerChange");
     this.setState((state) => ({
-      text: e.target.value,
+      textArea: e.target.value,
+    }));
+  }
+
+  handlerMouseEnter() {
+    this.setState((state) => ({
+      textMouse: "Входит и...",
+    }));
+  }
+
+  handlerMouseLeave() {
+    this.setState((state) => ({
+      textMouse: "...выходит",
     }));
   }
 
   render() {
-    const { counter, text } = this.state;
+    const { counter, textArea, textMouse } = this.state;
     return (
       <div>
         <h1>Обработка событий</h1>
         <div>
           <p>
-            {text ? text : "Здесь появится текст который будет введён ниже"}
+            {textArea
+              ? textArea
+              : "Здесь появится текст который будет введён ниже"}
           </p>
         </div>
 
@@ -31,6 +51,15 @@ class App extends React.Component {
             onChange={this.handlerChange}
           ></textarea>
         </form>
+
+        <div
+          id="mouseTarget"
+          onMouseEnter={this.handlerMouseEnter}
+          onMouseLeave={this.handlerMouseLeave}
+          className="menu navigation-menu"
+        >
+          <p>{textMouse}</p>
+        </div>
 
         <h2>{this.state.counter}</h2>
       </div>
