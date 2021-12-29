@@ -12,23 +12,31 @@ class App extends React.Component {
     this.handlerChange = this.handlerChange.bind(this);
     this.handlerMouseEnter = this.handlerMouseEnter.bind(this);
     this.handlerMouseLeave = this.handlerMouseLeave.bind(this);
+    this.handlerScroll = this.handlerScroll.bind(this);
   }
 
   handlerChange(e) {
-    this.setState((state) => ({
+    this.setState(() => ({
       textArea: e.target.value,
     }));
   }
 
   handlerMouseEnter() {
-    this.setState((state) => ({
+    this.setState(() => ({
       textMouse: "Входит и...",
     }));
   }
 
   handlerMouseLeave() {
-    this.setState((state) => ({
+    this.setState(() => ({
       textMouse: "...выходит",
+    }));
+  }
+
+  handlerScroll() {
+    console.log("Scroll event detected!");
+    this.setState((state) => ({
+      counter: state.counter + 1,
     }));
   }
 
@@ -43,15 +51,14 @@ class App extends React.Component {
               ? textArea
               : "Здесь появится текст который будет введён ниже"}
           </p>
+          <form>
+            <textarea
+              id="textAreaTarget"
+              placeholder="Введите свой текст"
+              onChange={this.handlerChange}
+            ></textarea>
+          </form>
         </div>
-
-        <form>
-          <textarea
-            id="textAreaTarget"
-            placeholder="Введите свой текст"
-            onChange={this.handlerChange}
-          ></textarea>
-        </form>
 
         <div
           id="mouseTarget"
@@ -61,8 +68,9 @@ class App extends React.Component {
         >
           <p>{textMouse}</p>
         </div>
-
-        <h2>{this.state.counter}</h2>
+        <div id="scrollTarget" onScroll={this.handlerScroll}>
+          <p>Ты скролил меня {counter} раз</p>
+        </div>
       </div>
     );
   }

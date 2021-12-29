@@ -1,3 +1,7 @@
+#textAreaTarget {
+  width: 13rem;
+}
+
 #mouseTarget {
   margin-top: 0.5rem;
   text-align: center;
@@ -5,6 +9,11 @@
   border: 2px solid #000;
 }
 
-#textAreaTarget {
+#scrollTarget {
+  margin-top: 0.5rem;
+  text-align: center;
   width: 13rem;
+  height: 3rem;
+  border: 2px dashed green;
+  overflow: auto;
 }
