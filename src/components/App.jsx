@@ -12,7 +12,7 @@ class App extends React.Component {
     this.handlerChange = this.handlerChange.bind(this);
     this.handlerMouseEnter = this.handlerMouseEnter.bind(this);
     this.handlerMouseLeave = this.handlerMouseLeave.bind(this);
-    this.handlerScroll = this.handlerScroll.bind(this);
+    this.handlerWheel = this.handlerWheel.bind(this);
   }
 
   handlerChange(e) {
@@ -33,7 +33,7 @@ class App extends React.Component {
     }));
   }
 
-  handlerScroll() {
+  handlerWheel() {
     console.log("Scroll event detected!");
     this.setState((state) => ({
       counter: state.counter + 1,
@@ -68,7 +68,7 @@ class App extends React.Component {
         >
           <p>{textMouse}</p>
         </div>
-        <div id="scrollTarget" onScroll={this.handlerScroll}>
+        <div id="WheelTarget" onWheel={this.handlerWheel}>
           <p>Ты скролил меня {counter} раз</p>
         </div>
       </div>
